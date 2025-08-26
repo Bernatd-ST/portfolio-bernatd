@@ -1,0 +1,663 @@
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced Skill bars animation with level up effect
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar');
+                    const skillPercentages = entry.target.querySelectorAll('.skill-percentage');
+                    
+                    skillBars.forEach((bar, index) => {
+                        const targetWidth = parseInt(bar.getAttribute('data-width'));
+                        const percentageElement = skillPercentages[index];
+                        
+                        // Reset bar width and percentage
+                        bar.style.width = '0%';
+                        if (percentageElement) {
+                            percentageElement.textContent = '0%';
+                        }
+                        
+                        // Animate with staggered delay
+                        setTimeout(() => {
+                            // Animate the bar width
+                            bar.style.width = targetWidth + '%';
+                            
+                            // Animate the percentage counter
+                            if (percentageElement) {
+                                animateCounter(percentageElement, 0, targetWidth, 1500);
+                            }
+                            
+                            // Add pulse effect when animation completes
+                            setTimeout(() => {
+                                bar.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+                                setTimeout(() => {
+                                    bar.style.boxShadow = 'none';
+                                }, 300);
+                            }, 1500);
+                            
+                        }, index * 200 + 500); // Staggered animation
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Counter animation function
+        function animateCounter(element, start, end, duration) {
+            const startTime = performance.now();
+            const range = end - start;
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Use easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const current = Math.round(start + (range * easeOutQuart));
+                
+                element.textContent = current + '%';
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+
+        document.querySelectorAll('#skills .fade-in').forEach(el => {
+            skillObserver.observe(el);
+        });
+
+        // Typing animation
+        const typingText = document.getElementById('typingText');
+        const texts = ['Full Stack Developer', 'Web Developer', 'AI Enthusiast'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriter() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 100 : 150;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // Start typing animation
+        setTimeout(typeWriter, 1000);
+
+        // Active navigation link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah dikirim. Saya akan segera menghubungi Anda kembali.');
+            this.reset();
+        });
+
+        // Portfolio data
+        const portfolioData = {
+            'Monitoring APP': {
+                title: 'Monitoring APP',
+                image: './img/project1/dashboard.png',
+                subtitle: 'Aplikasi monitoring untuk memantau dan mengelola stok, produksi, dan material dalam lingkungan manufaktur',
+                gradient: 'from-blue-400 to-purple-500',
+                description: [
+                    'Aplikasi ini dibuat untuk memantau dan mengelola stok, produksi, dan material dalam lingkungan manufaktur. Dengan fitur-fitur yang lengkap, aplikasi ini dapat membantu perusahaan untuk meningkatkan efisiensi dan produktivitas dalam proses produksi.'
+                ],
+                features: [
+                    'Sales Dashboard',
+                    'Planning Produksi (PPIC)',
+                    'Material Control',
+                    'Laporan Analisis',
+                ],
+                technologies: [
+                    { name: 'Frontend', tech: 'React.js', color: 'text-blue-600' },
+                    { name: 'Backend', tech: 'Codeigniter4', color: 'text-green-600' },
+                    { name: 'Database', tech: 'MySQL', color: 'text-purple-600' },
+                    { name: 'Styling', tech: 'Tailwind CSS', color: 'text-indigo-600' }
+                ],
+                stats: [
+                    { value: '2 Bulan', label: 'Durasi Pengembangan' },
+                    { value: '1 Orang', label: 'Tim Developer' }
+                ],
+                github: 'https://github.com/Bernatd-ST/Monitoring-APP.git',
+                demo: 'https://monitoring-app.site'
+            },
+            'AI Finance': {
+                title: 'AI Finance',
+                image: './img/project2/login2.png',
+                subtitle: 'Platform AI untuk rekap transaksi QRIS dan memberikan laporan keuangan dengan fitur AI untuk mempermudah pengguna dalam mengelola keuangan mereka',
+                gradient: 'from-green-400 to-blue-500',
+                description: [
+                    'Platform AI untuk rekap transaksi QRIS dan memberikan laporan keuangan dengan fitur AI untuk mempermudah pengguna dalam mengelola keuangan mereka'
+                ],
+                features: [
+                    'Real-time Data Transaksi',
+                    'AI Data Analysis',
+                    'Chat Bot',
+                    'Automated Report Generation',
+                    'Data Export to excel'
+                ],
+                technologies: [
+                    { name: 'Frontend', tech: 'React.js', color: 'text-green-600' },
+                    { name: 'Backend', tech: 'Node JS Express', color: 'text-blue-600' },
+                    { name: 'Database', tech: 'MongoDB', color: 'text-indigo-600' },
+                    { name: 'AI', tech: 'OpenAI', color: 'text-orange-600' }
+                ],
+                stats: [
+                    { value: '1 Bulan', label: 'Durasi Pengembangan' },
+                    { value: '1 Orang', label: 'Tim Developer' }
+                ],
+                github: 'https://github.com/Bernatd-ST/MY-AI-FINANCE.git',
+                demo: '#'
+            },
+            'Nawara App': {
+                title: 'Nawara App',
+                subtitle: 'Aplikasi mobile untuk mendukung perlindungan wanita dan anak, dukungan psikologis, dan informasi tentang keamanan online',
+                image: './img/project3/overview.png',
+                gradient: 'from-purple-400 to-pink-500',
+                description: [
+                    'Aplikasi mobile untuk mendukung perlindungan wanita dan anak, dukungan psikologis, dan informasi tentang keamanan online.'
+                ],
+                features: [
+                    'Fitur Stories',
+                    'Likes & comments on stories with Toxicity Classifier',
+                    'User Profiles',
+                    'Chat Consultation',
+                    'Panic Button'
+                ],
+                technologies: [
+                    { name: 'Mobile', tech: 'Kotlin', color: 'text-blue-600' },
+                    { name: 'Backend', tech: 'Node Js Express', color: 'text-red-600' },
+                    { name: 'Database', tech: 'MongoDB', color: 'text-red-500' },
+                    { name: 'Machine Learning', tech: 'Flask', color: 'text-green-600' }
+                ],
+                stats: [
+                    { value: '2 Bulan', label: 'Durasi Pengembangan' },
+                    { value: '6 Orang', label: 'Tim Developer' }
+                ],
+                github: 'https://github.com/Bernatd-ST/Project-Bangkit-Nawara.git',
+                demo: 'https://docs.google.com/presentation/d/1_MM92kLcT_vOc8ubUWwhYi81k3bQFaV4/edit?slide=id.p11#slide=id.p11'
+            },
+            'Bimbingan Online APP': {
+                title: 'Sistem Informasi bimbingan online kerja praktek',
+                subtitle: 'Platform bimbingan kerja praktek untuk selingkup prodi Sistem Informasi Universitas Bengkulu secara online',
+                image: './img/project4/login.png',
+                gradient: 'from-yellow-400 to-orange-500',
+                description: [
+                    'Platform bimbingan kerja praktek untuk selingkup prodi Sistem Informasi Universitas Bengkulu secara online',
+                    'Sistem ini dirancang untuk mendukung bimbingan kerja praktek jarak jauh dengan fitur menghubungkan antara dosen dan mahasiswa untuk melakukan bimbingan dan approval seminar'
+                ],
+                features: [
+                    'Bimbingan Online',
+                    'Approval Seminar',
+                    'Progress Tracking',
+                    'Pengajuan Judul',
+                    'Notifikasi approval'
+                ],
+                technologies: [
+                    { name: 'Frontend', tech: 'HTML CSS JS', color: 'text-red-600' },
+                    { name: 'Backend', tech: 'PHP Codeignither3', color: 'text-green-600' },
+                    { name: 'Database', tech: 'MySQL', color: 'text-blue-600' }
+                ],
+                stats: [
+                    { value: '2 Bulan', label: 'Durasi Pengembangan' },
+                    { value: '4 Orang', label: 'Tim Developer' }
+                ],
+                github: 'https://github.com/Bernatd-ST/Sistem-Informasi-Kerja-Praktek.git',
+                demo: 'https://drive.google.com/file/d/1Aw2BxyhC9t3fGt2J9A-2ZnIT3U4fUKIU/view?usp=sharing'
+            },
+            'Healthcare Management': {
+                title: 'Healthcare Management',
+                subtitle: 'Sistem manajemen rumah sakit dengan rekam medis digital dan appointment scheduling',
+                icon: '🏥',
+                gradient: 'from-red-400 to-purple-500',
+                description: [
+                    'Sistem manajemen rumah sakit yang terintegrasi dengan fitur rekam medis elektronik, appointment scheduling, dan inventory management. Membantu meningkatkan efisiensi operasional rumah sakit.',
+                    'Platform ini dikembangkan sesuai dengan standar HIPAA untuk keamanan data medis dan telah diimplementasikan di beberapa rumah sakit dengan hasil yang memuaskan.'
+                ],
+                features: [
+                    'Electronic Medical Records',
+                    'Appointment Scheduling',
+                    'Patient Management',
+                    'Inventory & Pharmacy',
+                    'Billing & Insurance',
+                    'Staff Management System'
+                ],
+                technologies: [
+                    { name: 'Frontend', tech: 'React.js', color: 'text-blue-600' },
+                    { name: 'Backend', tech: 'PHP Laravel', color: 'text-red-600' },
+                    { name: 'Database', tech: 'PostgreSQL', color: 'text-indigo-600' },
+                    { name: 'Security', tech: 'HIPAA Compliant', color: 'text-green-600' }
+                ],
+                stats: [
+                    { value: '12 Bulan', label: 'Durasi Pengembangan' },
+                    { value: '8 Orang', label: 'Tim Developer' },
+                    { value: '120K+', label: 'Lines of Code' }
+                ],
+                github: 'https://github.com/ahmadrizki/healthcare-management',
+                demo: 'https://healthcare-demo.ahmadrizki.dev'
+            },
+            'Nawara APP': {
+                title: 'Nawara APP',
+                subtitle: 'Aplikasi untuk mendukung perlindungan wanita dan anak, dukungan psikologis, dan informasi tentang keamanan online',
+                image: './img/project3/overview.png',
+                gradient: 'from-indigo-400 to-blue-500',
+                description: [
+                    'Aplikasi ini berbasis mobile di lengkapi fitur machine learning untuk filtering toxic classification dan fitur beberapa fitur tambahan lainnya'
+                ],
+                features: [
+                    'Filtering Toxic Classification',
+                    '',
+                    'Payment Gateway Integration',
+                    'Damage Report & Insurance',
+                    'Maintenance Scheduling',
+                    'Customer Rating System'
+                ],
+                technologies: [
+                    { name: 'Frontend', tech: 'Vue.js', color: 'text-green-600' },
+                    { name: 'Backend', tech: 'Node.js', color: 'text-green-600' },
+                    { name: 'Database', tech: 'MongoDB', color: 'text-purple-600' },
+                    { name: 'Maps', tech: 'Google Maps API', color: 'text-blue-600' }
+                ],
+                stats: [
+                    { value: '7 Bulan', label: 'Durasi Pengembangan' },
+                    { value: '4 Orang', label: 'Tim Developer' },
+                    { value: '60K+', label: 'Lines of Code' }
+                ],
+                github: 'https://github.com/ahmadrizki/car-rental-system',
+                demo: 'https://carrental-demo.ahmadrizki.dev'
+            }
+        };
+
+        // Show portfolio detail
+        function showPortfolioDetail(projectName) {
+            const project = portfolioData[projectName];
+            if (!project) return;
+
+            // Update content
+            document.getElementById('project-title').textContent = project.title;
+            document.getElementById('project-subtitle').textContent = project.subtitle;
+            
+            // Update all project images
+            const projectImages = document.querySelectorAll('.project-image');
+            projectImages.forEach((imageDiv, index) => {
+                // Clear previous content
+                imageDiv.innerHTML = '';
+                
+                // Set gradient background based on project
+                imageDiv.className = `project-image bg-gradient-to-br ${project.gradient} h-80 flex items-center justify-center text-white text-8xl group-hover:scale-105 transition-transform duration-500`;
+                
+                // Add project-specific images
+                if (projectName === 'Monitoring APP') {
+                    if (index === 0) imageDiv.innerHTML = `<img src="./img/project1/dashboard.png" alt="Dashboard">`;
+                    else if (index === 1) imageDiv.innerHTML = `<img src="./img/project1/report.png" alt="Report">`;
+                    else if (index === 2) imageDiv.innerHTML = `<img src="./img/project1/login.png" alt="Login">`;
+                    else if (index === 3) imageDiv.innerHTML = `<img src="./img/project1/grafik.png" alt="Grafik">`;
+                } else if (projectName === 'AI Finance') {
+                    if (index === 0) imageDiv.innerHTML = `<img src="./img/project2/login2.png" alt="Login">`;
+                    else if (index === 1) imageDiv.innerHTML = `<img src="./img/project2/telegram-1.png" alt="Telegram">`;
+                    else if (index === 2) imageDiv.innerHTML = `<img src="./img/project2/telegram.png" alt="Excel Laporan">`;
+                    else if (index === 3) imageDiv.innerHTML = `<img src="./img/project2/excel-laporan.png" alt="Chat">`;
+                } else if (projectName === 'Nawara App') {
+                    if (index === 0) imageDiv.innerHTML = `<img src="./img/project3/overview.png" alt="Overview">`;
+                    else if (index === 1) imageDiv.innerHTML = `<img src="./img/project3/api.png" alt="API">`;
+                    else if (index === 2) imageDiv.innerHTML = `<img src="./img/project3/mobile.png" alt="Mobile">`;
+                    else if (index === 3) imageDiv.innerHTML = `<img src="./img/project3/arsitektur.png" alt="Arsitektur">`;
+                } else if (projectName === 'Bimbingan Online APP') {
+                    if (index === 0) imageDiv.innerHTML = `<img src="./img/project4/data.png" alt="Data">`;
+                    else if (index === 1) imageDiv.innerHTML = `<img src="./img/project4/approval2.png" alt="Approval">`;
+                    else if (index === 2) imageDiv.innerHTML = `<img src="./img/project4/pengajuan2.png" alt="Pengajuan">`;
+                    else if (index === 3) imageDiv.innerHTML = `<img src="./img/project4/approval.png" alt="Approval">`;
+                } else {
+                    // Fallback to icon if no specific images
+                    imageDiv.textContent = project.icon || '';
+                }
+            });
+            
+            // Update description
+            const descriptionDiv = document.getElementById('project-description');
+            descriptionDiv.innerHTML = project.description.map(p => `<p>${p}</p>`).join('');
+            
+            // Update features
+            const featuresDiv = document.getElementById('project-features');
+            featuresDiv.innerHTML = project.features.map(feature => `
+                <div class="flex items-center text-gray-600">
+                    <div class="w-2 h-2 gradient-bg rounded-full mr-3"></div>
+                    ${feature}
+                </div>
+            `).join('');
+            
+            // Update technologies
+            const techDiv = document.getElementById('project-technologies');
+            techDiv.innerHTML = project.technologies.map(tech => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span class="text-gray-700 font-medium">${tech.name}</span>
+                    <span class="${tech.color} text-sm">${tech.tech}</span>
+                </div>
+            `).join('');
+            
+            // Update stats
+            const statsDiv = document.getElementById('project-stats');
+            statsDiv.innerHTML = project.stats.map((stat, index) => {
+                const gradients = [
+                    'from-blue-50 to-purple-50',
+                    'from-green-50 to-blue-50',
+                    'from-purple-50 to-pink-50'
+                ];
+                return `
+                    <div class="text-center p-4 bg-gradient-to-r ${gradients[index]} rounded-lg">
+                        <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">${stat.value}</div>
+                        <div class="text-gray-600 text-sm">${stat.label}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Show the appropriate architecture section based on project name
+            // First, hide all architecture sections
+            document.querySelectorAll('[id^="architecture-"]').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Then show the specific architecture section for this project
+            const architectureSection = document.getElementById(`architecture-${projectName}`);
+            if (architectureSection) {
+                architectureSection.classList.remove('hidden');
+            } else {
+                // If no specific architecture section exists, show the default one
+                document.getElementById('architecture-default').classList.remove('hidden');
+            }
+            
+            // Update links
+            document.getElementById('github-link').href = project.github;
+            document.getElementById('demo-link').href = project.demo;
+            
+            // Show detail section and hide portfolio section
+            document.getElementById('portfolio').style.display = 'none';
+            document.getElementById('portfolio-detail').classList.remove('hidden');
+            
+            // Scroll to top of detail section
+            document.getElementById('portfolio-detail').scrollIntoView({ behavior: 'smooth' });
+            
+            // Trigger fade-in animations
+            setTimeout(() => {
+                document.querySelectorAll('#portfolio-detail .fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Close portfolio detail
+        function closePortfolioDetail() {
+            document.getElementById('portfolio-detail').classList.add('hidden');
+            document.getElementById('portfolio').style.display = 'block';
+            
+            // Reset fade-in classes
+            document.querySelectorAll('#portfolio-detail .fade-in').forEach(el => {
+                el.classList.remove('visible');
+            });
+            
+            // Scroll to portfolio section
+            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Portfolio item clicks
+        document.querySelectorAll('.portfolio-overlay button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Prevent event bubbling to parent
+                e.stopPropagation();
+                
+                // Get project title from h3 element
+                const projectTitle = this.parentElement.querySelector('h3').textContent;
+                
+                // Show portfolio details
+                showPortfolioDetail(projectTitle);
+            });
+        });
+
+        // Ripple effect function
+        function createRipple(event) {
+            // Make sure not to interfere with button clicks
+            if (event.target.tagName === 'BUTTON' || event.target.closest('button')) {
+                // If clicked on a button or its child, don't create ripple here
+                return;
+            }
+            
+            const button = event.currentTarget;
+            const circle = document.createElement("span");
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+
+            const rect = button.getBoundingClientRect();
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - rect.left - radius}px`;
+            circle.style.top = `${event.clientY - rect.top - radius}px`;
+            circle.classList.add("portfolio-ripple");
+
+            const ripple = button.querySelector(".portfolio-ripple");
+            if (ripple) {
+                ripple.remove();
+            }
+
+            button.appendChild(circle);
+        }
+
+        // Enhanced portfolio animations
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        portfolioItems.forEach((item, index) => {
+            // Staggered animation on scroll
+            const portfolioObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            portfolioObserver.observe(item);
+            
+            // Add magnetic effect
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const moveX = x * 0.1;
+                const moveY = y * 0.1;
+                
+                item.style.transform = `translateY(-15px) scale(1.02) translate(${moveX}px, ${moveY}px)`;
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0) scale(1) translate(0, 0)';
+            });
+        });
+
+        // Experience Timeline Animation
+        const experienceItems = document.querySelectorAll('.experience-item');
+        const timelineLine = document.getElementById('timeline-line');
+        const timelineDots = document.querySelectorAll('.timeline-dot');
+        let timelineAnimated = false;
+
+        const experienceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = parseInt(entry.target.getAttribute('data-index'));
+                    
+                    // Animate timeline line on first item
+                    if (index === 0 && !timelineAnimated) {
+                        timelineAnimated = true;
+                        setTimeout(() => {
+                            timelineLine.classList.add('animate');
+                        }, 300);
+                    }
+                    
+                    // Animate experience item with staggered delay
+                    setTimeout(() => {
+                        // Animate year badge
+                        const yearBadge = entry.target.querySelector('.experience-year');
+                        if (yearBadge) {
+                            yearBadge.classList.add('visible');
+                        }
+                        
+                        // Animate timeline dot
+                        const dot = entry.target.querySelector('.timeline-dot');
+                        if (dot) {
+                            setTimeout(() => {
+                                dot.classList.add('visible');
+                                // Add pulse effect to the most recent item
+                                if (index === 0) {
+                                    dot.classList.add('active');
+                                }
+                            }, 200);
+                        }
+                        
+                        // Animate experience card
+                        const card = entry.target.querySelector('.experience-card');
+                        if (card) {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, 400);
+                        }
+                        
+                        // Animate the main container
+                        entry.target.classList.add('visible');
+                        
+                    }, index * 300); // Staggered delay based on index
+                }
+            });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Observe all experience items
+        experienceItems.forEach(item => {
+            experienceObserver.observe(item);
+        });
+
+        // Enhanced scroll-based timeline animation
+        const timelineContainer = document.getElementById('timeline-container');
+        
+        const timelineScrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Calculate scroll progress within the timeline section
+                    const rect = entry.target.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const elementTop = rect.top;
+                    const elementHeight = rect.height;
+                    
+                    // Calculate how much of the element is visible
+                    const visibleHeight = Math.min(windowHeight - Math.max(elementTop, 0), elementHeight);
+                    const scrollProgress = Math.max(0, Math.min(1, visibleHeight / (windowHeight * 0.8)));
+                    
+                    // Update timeline line height based on scroll progress
+                    if (timelineAnimated) {
+                        timelineLine.style.height = `${scrollProgress * 100}%`;
+                    }
+                }
+            });
+        }, { 
+            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        });
+
+        if (timelineContainer) {
+            timelineScrollObserver.observe(timelineContainer);
+        }
+
+        // Add hover effects to experience cards
+        experienceItems.forEach(item => {
+            const card = item.querySelector('.experience-card');
+            const dot = item.querySelector('.timeline-dot');
+            
+            if (card && dot) {
+                card.addEventListener('mouseenter', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                    dot.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.6)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1)';
+                    dot.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+                });
+            }
+        });

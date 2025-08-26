@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Bernatd Situmeang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">
+                    Portfolio
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-600">Services</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600">Experience</a>
+                    <a href="#portfolio" class="nav-link text-gray-700 hover:text-blue-600">Portfolio</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+                </div>
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
+                <a href="#skills" class="block py-2 text-gray-700 hover:text-blue-600">Skills</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-blue-600">Services</a>
+                <a href="#experience" class="block py-2 text-gray-700 hover:text-blue-600">Experience</a>
+                <a href="#portfolio" class="block py-2 text-gray-700 hover:text-blue-600">Portfolio</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen relative overflow-hidden flex items-center justify-center text-white">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 gradient-bg"></div>
+        
+        <!-- Floating Shapes -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="floating-shape shape-4"></div>
+            <div class="floating-shape shape-5"></div>
+        </div>
+        
+        <!-- Wave Background for Profile -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="wave-container">
+                <svg class="wave-bg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        
+                        <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(255,255,255,0.03);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path class="wave-path wave-1" fill="url(#waveGradient1)" d="M200,50 C250,50 300,100 350,150 C350,200 300,250 250,300 C200,350 150,300 100,250 C50,200 50,150 100,100 C150,50 200,50 Z">
+                        <animateTransform attributeName="transform" type="rotate" values="0 200 200;360 200 200" dur="20s" repeatCount="indefinite"/>
+                    </path>
+                    <path class="wave-path wave-2" fill="url(#waveGradient2)" d="M200,70 C240,70 280,110 320,150 C320,190 280,230 240,270 C200,310 160,270 120,230 C80,190 80,150 120,110 C160,70 200,70 Z">
+                        <animateTransform attributeName="transform" type="rotate" values="360 200 200;0 200 200" dur="15s" repeatCount="indefinite"/>
+                    </path>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="floating">
+                <div class="profile-container relative">
+                    <!-- Slime Background -->
+                    <div class="slime-bg">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="slimeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgba(255,255,255,0.2);stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path class="slime-path" fill="url(#slimeGradient)" d="M100,20 C130,20 160,40 180,70 C190,90 185,110 175,130 C160,150 140,160 120,170 C100,180 80,170 60,150 C40,130 35,110 45,90 C55,70 75,50 100,20 Z">
+                                <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+                                    M100,20 C130,20 160,40 180,70 C190,90 185,110 175,130 C160,150 140,160 120,170 C100,180 80,170 60,150 C40,130 35,110 45,90 C55,70 75,50 100,20 Z;
+                                    M100,15 C135,25 165,45 185,75 C195,95 190,115 180,135 C165,155 145,165 125,175 C105,185 85,175 65,155 C45,135 40,115 50,95 C60,75 80,55 100,15 Z;
+                                    M100,25 C125,15 155,35 175,65 C185,85 180,105 170,125 C155,145 135,155 115,165 C95,175 75,165 55,145 C35,125 30,105 40,85 C50,65 70,45 100,25 Z;
+                                    M100,20 C130,20 160,40 180,70 C190,90 185,110 175,130 C160,150 140,160 120,170 C100,180 80,170 60,150 C40,130 35,110 45,90 C55,70 75,50 100,20 Z"/>
+                            </path>
+                        </svg>
+                    </div>
+                    
+                    <!-- Profile Image -->
+                    <div class="profile-image">
+                        <img src="./img/foto3.png" alt="Profile">
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 fade-in">
+                Bernatd Situmeang
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 fade-in typing-animation" id="typingText">
+                Full Stack Developer
+            </p>
+            <div class="fade-in">
+                <a href="#about" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 mr-4 hover:scale-105 transform">
+                    Tentang Saya
+                </a>
+                <a href="#portfolio" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition duration-300 hover:scale-105 transform">
+                    Lihat Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in">Tentang Saya</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto fade-in"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="w-80 h-80 mx-auto bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-8xl text-white">
+                            <img src="./img/foto.png" alt="Profile">
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Halo! Saya Bernatd Situmeang</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Saya adalah seorang Backend Developer dengan passion tinggi dalam menciptakan solusi digital yang inovatif, andal, dan ramah pengguna. Selama lebih dari dua tahun berkarya di industri teknologi, saya telah mengembangkan beragam aplikasi web, desktop, hingga sistem berbasis AI.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Saya selalu bersemangat mempelajari teknologi terbaru dan siap menghadapi tantangan kompleks untuk menciptakan solusi yang efisien dan berdampak nyata. Misi saya adalah membantu bisnis berkembang melalui teknologi yang tepat sasaran dan berkelanjutan.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">📧 Email</h4>
+                            <p class="text-gray-600">bernatdsitumeang077@gmail.com</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">📱 Phone</h4>
+                            <p class="text-gray-600">+62 838-7374-5207</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">📍 Location</h4>
+                            <p class="text-gray-600">Jakarta, Indonesia</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 mb-2">🎂 Age</h4>
+                            <p class="text-gray-600">24 Years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in">Keahlian Saya</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto fade-in"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800">Frontend Development</h3>
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">HTML/CSS</span>
+                                    <span class="text-gray-700 skill-percentage">95%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">JavaScript</span>
+                                    <span class="text-gray-700 skill-percentage">90%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">React.js</span>
+                                    <span class="text-gray-700 skill-percentage">85%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Vue.js</span>
+                                    <span class="text-gray-700 skill-percentage">85%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full" data-width="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800">Backend Development</h3>
+                        <div class="space-y-4">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Node.js</span>
+                                    <span class="text-gray-700 skill-percentage">90%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full" data-width="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">PHP</span>
+                                    <span class="text-gray-700 skill-percentage">85%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Laravel & Codeignither</span>
+                                    <span class="text-gray-700 skill-percentage">85%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full" data-width="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">MongoDB & MySQL</span>
+                                    <span class="text-gray-700 skill-percentage">90%</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-3">
+                                    <div class="skill-bar bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full" data-width="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in">Layanan Saya</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto fade-in"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover fade-in">
+                    <div class="text-5xl mb-6 text-center">🌐</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">Web Development</h3>
+                    <p class="text-gray-600 text-center mb-6">
+                        Pengembangan website responsif dan modern menggunakan teknologi terkini 
+                        untuk memberikan pengalaman pengguna yang optimal.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>✓ Responsive Design</li>
+                        <li>✓ SEO Optimization</li>
+                        <li>✓ Fast Loading</li>
+                        <li>✓ Cross-browser Compatible</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover fade-in">
+                    <div class="text-5xl mb-6 text-center">🤖</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">AI Automation Development</h3>
+                    <p class="text-gray-600 text-center mb-6">
+                        Solusi otomatisasi cerdas menggunakan n8n, Make.com, dan teknologi AI untuk menyederhanakan proses bisnis, mengurangi pekerjaan manual, dan meningkatkan efisiensi.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>✓ AI Workflow Automation & Integration</li>
+                        <li>✓ Data Processing & AI Decision Making</li>
+                        <li>✓ UI/UX Design for Automation Dashboard</li>
+                        <li>✓ App Deployment & Cloud Integration</li>
+                        <li>✓ Maintenance, Support & Scalability</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover fade-in">
+                    <div class="text-5xl mb-6 text-center">⚙️</div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800 text-center">Backend Development</h3>
+                    <p class="text-gray-600 text-center mb-6">
+                        Pengembangan sistem backend yang robust, scalable, dan secure 
+                        untuk mendukung aplikasi web dan mobile Anda.
+                    </p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>✓ API Development</li>
+                        <li>✓ Database Design</li>
+                        <li>✓ Cloud Integration</li>
+                        <li>✓ Security Implementation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in">Pengalaman Kerja & Organisasi</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto fade-in"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="relative" id="timeline-container">
+                    <!-- Animated Timeline Line -->
+                    <div class="timeline-line" id="timeline-line"></div>
+                    
+                    <!-- Experience Item 1 -->
+                    <div class="mb-12 experience-item" data-index="0">
+                        <!-- Timeline Dot -->
+                        <div class="timeline-dot" style="top: 60px;"></div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="bg-white p-4 rounded-full shadow-lg ml-auto mr-8 md:mr-12 experience-year">
+                                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                                    2024
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg ml-auto w-full md:w-5/12 experience-card">
+                            <div class="experience-content">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Backend Developer</h3>
+                                <p class="text-blue-600 mb-4 company">PT. Supranusa Sindata VHP</p>
+                                <p class="text-gray-600">
+                                    Mengembangkan sistem backend yang robust, scalable, dan secure 
+                                    untuk mendukung aplikasi web dan mobile.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 2 -->
+                    <div class="mb-12 experience-item right" data-index="1">
+                        <!-- Timeline Dot -->
+                        <div class="timeline-dot" style="top: 60px;"></div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="bg-white p-4 rounded-full shadow-lg mr-auto ml-8 md:ml-12 experience-year">
+                                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                                    2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg mr-auto w-full md:w-5/12 experience-card">
+                            <div class="experience-content">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Ketua Umum</h3>
+                                <p class="text-blue-600 mb-4 company">Himpunan Mahasiswa Sistem Informasi</p>
+                                <p class="text-gray-600">
+                                    Mengelola dan mengatur segala kegiatan baik internal maupun eksternal Himpunan Mahasiswa Sistem Informasi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 3 -->
+                    <div class="mb-12 experience-item" data-index="2">
+                        <!-- Timeline Dot -->
+                        <div class="timeline-dot" style="top: 60px;"></div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="bg-white p-4 rounded-full shadow-lg ml-auto mr-8 md:mr-12 experience-year">
+                                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                                    2022
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg ml-auto w-full md:w-5/12 experience-card">
+                            <div class="experience-content">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Freelance Fullstack Developer</h3>
+                                <p class="text-blue-600 mb-4 company">Freelance</p>
+                                <p class="text-gray-600">
+                                    Mengembangkan berbagai proyek web dan aplikasi untuk klien, mulai dari perancangan sistem, pengembangan frontend dan backend, integrasi API, hingga deployment sesuai kebutuhan bisnis mereka.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Experience Item 4 -->
+                     <div class="mb-12 experience-item right" data-index="1">
+                        <!-- Timeline Dot -->
+                        <div class="timeline-dot" style="top: 60px;"></div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="bg-white p-4 rounded-full shadow-lg mr-auto ml-8 md:ml-12 experience-year">
+                                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white font-bold">
+                                    2020
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-lg mr-auto w-full md:w-5/12 experience-card">
+                            <div class="experience-content">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Asisten Dosen</h3>
+                                <p class="text-blue-600 mb-4 company">Part Time</p>
+                                <p class="text-gray-600">
+                                    Menjadi Asisten Dosen (2020 - 2023) dengan tanggung jawab mempersiapkan modul praktikum, mendukung proses belajar mengajar, serta membimbing mahasiswa dalam mata kuliah seperti Dasar-dasar Pemrograman, Desain Basis Data, dan Project Management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-white relative overflow-hidden">
+        <!-- Floating Background Elements -->
+        <div class="absolute inset-0">
+            <div class="portfolio-floating-element portfolio-float-1"></div>
+            <div class="portfolio-floating-element portfolio-float-2"></div>
+            <div class="portfolio-floating-element portfolio-float-3"></div>
+            <div class="portfolio-floating-element portfolio-float-4"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4 fade-in">Portfolio Saya</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto fade-in"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto fade-in">
+                    Berikut adalah beberapa proyek yang telah saya kerjakan dengan berbagai teknologi modern
+                </p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in" onclick="createRipple(event)">
+                    <div class="portfolio-content bg-gradient-to-br from-blue-400 to-purple-500 h-64 flex items-center justify-center text-white">
+                        <div class="portfolio-icon">
+                            <img src="./img/project1/dashboard.png" alt="Monitoring APP">
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-4">Monitoring APP</h3>
+                        <p class="text-white text-center mb-6 px-4">Aplikasi monitoring untuk memantau dan mengelola stok, produksi, dan material dalam lingkungan manufaktur</p>
+                        <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Detail
+                        </button>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" onclick="createRipple(event)">
+                    <div class="portfolio-content bg-gradient-to-br from-green-400 to-blue-500 h-64 flex items-center justify-center text-white">
+                        <div class="portfolio-icon">
+                            <img src="./img/project2/login2.png" alt="Monitoring APP">
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-4">AI Finance</h3>
+                        <p class="text-white text-center mb-6 px-4">Platform AI untuk rekap transaksi QRIS dan memberikan laporan keuangan dengan fitur AI untuk mempermudah pengguna dalam mengelola keuangan mereka.</p>
+                        <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Detail
+                        </button>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" onclick="createRipple(event)">
+                    <div class="portfolio-content bg-gradient-to-br from-purple-400 to-pink-500 h-64 flex items-center justify-center text-white">
+                        <div class="portfolio-icon">📱</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-4">Mobile Banking App</h3>
+                        <p class="text-white text-center mb-6 px-4">Aplikasi mobile banking dengan fitur keamanan tinggi</p>
+                        <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Detail
+                        </button>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in" onclick="createRipple(event)">
+                    <div class="portfolio-content bg-gradient-to-br from-yellow-400 to-orange-500 h-64 flex items-center justify-center text-white">
+                        <div class="portfolio-icon">🎓</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="text-2xl font-bold text-white mb-4">Learning Management System</h3>
+                        <p class="text-white text-center mb-6 px-4">Platform pembelajaran online dengan fitur video conference</p>
+                        <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold transition duration-300">
+                            <i class="fas fa-eye mr-2"></i>Lihat Detail
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Detail Section -->
+    <section id="portfolio-detail" class="py-20 bg-gray-50 hidden">
+        <div class="container mx-auto px-6">
+            <!-- Back Button -->
+            <div class="mb-8 fade-in">
+                <button onclick="closePortfolioDetail()" class="flex items-center text-blue-600 hover:text-blue-800 transition duration-300 group">
+                    <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform duration-300"></i>
+                    Kembali ke Portfolio
+                </button>
+            </div>
+
+            <!-- Project Header -->
+            <div class="text-center mb-16 fade-in">
+                <h2 id="project-title" class="text-4xl font-bold text-gray-800 mb-4">Monitoring APP</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto mb-6"></div>
+                <p id="project-subtitle" class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Aplikasi monitoring untuk memantau dan mengelola stok, produksi, dan material dalam lingkungan manufaktur
+                </p>
+            </div>
+
+            <!-- Project Images -->
+            <div class="mb-16 fade-in">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
+                        <div id="project-main-image-1" class="project-image bg-gradient-to-br from-blue-400 to-purple-500 h-80 flex items-center justify-center text-white text-8xl group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
+                        <div id="project-main-image-2" class="project-image bg-gradient-to-br from-blue-400 to-purple-500 h-80 flex items-center justify-center text-white text-8xl group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/project1/report.png" alt="">
+                        </div>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
+                        <div id="project-main-image-3" class="project-image bg-gradient-to-br from-blue-400 to-purple-500 h-80 flex items-center justify-center text-white text-8xl group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/project1/login.png" alt="">
+                        </div>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl group">
+                        <div id="project-main-image-4" class="project-image bg-gradient-to-br from-blue-400 to-purple-500 h-80 flex items-center justify-center text-white text-8xl group-hover:scale-105 transition-transform duration-500">
+                            <img src="./img/project1/grafik.png" alt="">
+                        </div>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <!-- <div class="space-y-4">
+                        <div class="bg-gradient-to-br from-purple-400 to-pink-500 h-36 rounded-xl flex items-center justify-center text-white text-4xl hover:scale-105 transition-transform duration-300 cursor-pointer">
+                            📊
+                        </div>
+                        <div class="bg-gradient-to-br from-green-400 to-blue-500 h-36 rounded-xl flex items-center justify-center text-white text-4xl hover:scale-105 transition-transform duration-300 cursor-pointer">
+                            💳
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Project Info Grid -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Project Overview -->
+                <div class="lg:col-span-2 fade-in">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <div class="w-8 h-8 gradient-bg rounded-full flex items-center justify-center text-white text-sm mr-3">
+                                <i class="fas fa-info"></i>
+                            </div>
+                            Deskripsi Project
+                        </h3>
+                        <div id="project-description" class="text-gray-600 leading-relaxed space-y-4">
+                            <p>
+                                Stock Supplier Monitoring System adalah aplikasi web berbasis CodeIgniter 4 yang dirancang untuk memantau dan mengelola stok, produksi, dan material dalam lingkungan manufaktur. Sistem ini menyediakan dashboard komprehensif untuk admin dan pengguna untuk mengelola data sales, planning produksi (PPIC), material control, serta laporan analisis yang mendalam.
+                            </p>
+                            <p>
+                                project ini dikembangkan untuk memenuhi kebutuhan bisnis manufactur modern yang memerlukan solusi digital yang scalable dan user-friendly. Dengan fokus pada performa tinggi dan keamanan data yang terjamin.
+                            </p>
+                        </div>
+
+                        <!-- Key Features -->
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Fitur Utama:</h4>
+                            <div id="project-features" class="grid md:grid-cols-2 gap-4">
+                                <div class="flex items-center text-gray-600">
+                                    <div class="w-2 h-2 gradient-bg rounded-full mr-3"></div>
+                                    Sales Dashboard
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <div class="w-2 h-2 gradient-bg rounded-full mr-3"></div>
+                                    Planning Produksi (PPIC)
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <div class="w-2 h-2 gradient-bg rounded-full mr-3"></div>
+                                    Material Control
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <div class="w-2 h-2 gradient-bg rounded-full mr-3"></div>
+                                    Laporan Analisis
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Details Sidebar -->
+                <div class="space-y-6 fade-in">
+                    <!-- Technologies Used -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <div class="w-8 h-8 gradient-bg rounded-full flex items-center justify-center text-white text-sm mr-3">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            Teknologi
+                        </h3>
+                        <div id="project-technologies" class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700 font-medium">Frontend</span>
+                                <span class="text-blue-600 text-sm">React.js</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700 font-medium">Backend</span>
+                                <span class="text-green-600 text-sm">Node.js</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700 font-medium">Database</span>
+                                <span class="text-purple-600 text-sm">MongoDB</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-700 font-medium">Styling</span>
+                                <span class="text-indigo-600 text-sm">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Stats -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <div class="w-8 h-8 gradient-bg rounded-full flex items-center justify-center text-white text-sm mr-3">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            Statistik
+                        </h3>
+                        <div id="project-stats" class="space-y-4">
+                            <div class="text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
+                                <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">6 Bulan</div>
+                                <div class="text-gray-600 text-sm">Durasi Pengembangan</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
+                                <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">5 Orang</div>
+                                <div class="text-gray-600 text-sm">Tim Developer</div>
+                            </div>
+                            <div class="text-center p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
+                                <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">50K+</div>
+                                <div class="text-gray-600 text-sm">Lines of Code</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <div class="w-8 h-8 gradient-bg rounded-full flex items-center justify-center text-white text-sm mr-3">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            Links
+                        </h3>
+                        <div class="space-y-3">
+                            <a href="https://github.com/Bernatd-ST/Monitoring-APP.git" id="github-link" class="flex items-center justify-center w-full bg-gray-900 text-white py-3 rounded-lg hover:bg-gray-800 transition duration-300 group">
+                                <i class="fab fa-github mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                                View on GitHub
+                            </a>
+                            <a href="https://monitoring-app.site" id="demo-link" class="flex items-center justify-center w-full gradient-bg text-white py-3 rounded-lg hover:opacity-90 transition duration-300 group">
+                                <i class="fas fa-external-link-alt mr-2 group-hover:scale-110 transition-transform duration-300"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Architecture -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg mb-16 fade-in">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <div class="w-8 h-8 gradient-bg rounded-full flex items-center justify-center text-white text-sm mr-3">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    Arsitektur Sistem
+                </h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
+                        <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                            🎨
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Frontend Layer</h4>
+                        <p class="text-gray-600 text-sm">React.js dengan state management menggunakan Redux untuk UI yang responsive dan interaktif</p>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-green-50 to-blue-50 rounded-xl">
+                        <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                            ⚙️
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Backend Layer</h4>
+                        <p class="text-gray-600 text-sm">PHP 8.2 dengan Codeigniter4 untuk API yang scalable dan secure</p>
+                    </div>
+                    <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+                        <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                            🗄️
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Database Layer</h4>
+                        <p class="text-gray-600 text-sm">MySQL untuk penyimpanan data yang fleksibel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 fade-in">Hubungi Saya</h2>
+                <div class="w-20 h-1 bg-white mx-auto fade-in"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold mb-8">Mari Berkolaborasi!</h3>
+                    <p class="text-lg mb-8 opacity-90">
+                        Saya siap membantu mewujudkan ide digital Anda menjadi kenyataan. 
+                        Hubungi saya untuk diskusi lebih lanjut tentang proyek Anda.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="opacity-90">ahmad.rizki@email.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Telepon</h4>
+                                <p class="opacity-90">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Lokasi</h4>
+                                <p class="opacity-90">Jakarta, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <form class="bg-white/10 backdrop-blur-md p-8 rounded-2xl">
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Nama Lengkap</label>
+                            <input type="text" class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white" placeholder="Masukkan email Anda">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Subjek</label>
+                            <input type="text" class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white" placeholder="Subjek pesan">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Pesan</label>
+                            <textarea rows="5" class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:border-white resize-none" placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Ahmad Rizki. Semua hak cipta dilindungi.</p>
+            <p class="mt-2 opacity-70">Dibuat dengan ❤️ menggunakan HTML, CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97386495d2519c32',t:'MTc1NTkyODg2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
